@@ -1,4 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'rack'
-gem 'thin'
+# A 'thin' webserver
+# gem 'thin'
+
+gem 'pry'
+gem 'pry-byebug'
+
