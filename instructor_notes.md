@@ -75,8 +75,20 @@ To get:
 {:name=>"tom", :age=>"57", :city=>"Groton", :state=>"MA"}
 ```
  
+### Lab
+Write an app that will:  
 
-_
+* Create a Product class where each product has a name, description and price.  
+* Create 10 products and add them to an array.  
+* Retrieve all the products by going to localhost:3000/products   
+	* Show the products as HTML.
+	* Show the products as JSON.
+	
+	Note: The product class will have to_html and to_json methods.  
+
+* Show each individual Product by going to localhost:3000/product/:id . Where :id is the index of the product in the products array.
+
+	
 
 
                                                                       
