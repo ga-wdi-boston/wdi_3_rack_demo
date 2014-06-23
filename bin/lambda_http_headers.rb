@@ -15,7 +15,7 @@ app = lambda do |env|
   response << "User Agent: #{env['HTTP_USER_AGENT']}"
   response << "URL Scheme: #{env['rack.url_scheme']}\n"  
   
-  [200, { }, [response.join("\n")] ]
+  [200, {'Content-Type' => 'text/plain' }, [response.join("\n")] ]
 end
 
 Rack::Handler::WEBrick.run app, Port: 1234

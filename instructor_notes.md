@@ -8,15 +8,48 @@
 
 #### Show the simplest Rack app possible.  
 Will show the current time.
+
+This application, _a simple Ruby lambda_ , is passed an environment Ruby hash that contains the HTTP Request Header.
+
+This app will return an array with three entries:  
+1. A HTTP Status Code, 200 is the code for OK.  
+2. A Ruby hash that contains the HTTP Response Header.  
+3. Any Object that responds to the 'each' method.  __This will be the body of the page you will see in the browser__
+
+
+##### Run the Rack app.
  
 ```
 ruby lambda_time.rb
 ```
 
+##### Send a HTTP Request with curl.  
+```
+curl -i http://localhost:1234/this/is/my/path?name=jack&age=33
+```
+
+##### Send a HTTP Request with Chrome.  
+
+http://localhost:1234/this%20is%20it/but/not%20the%20/end?name=jack&age=33
+
+Open the Chrome Inspector and go to the Network tab. Refresh and look at the HTTP Request/Response.
+
+### Lab
+
+Break up into groups of three and answer all of the below questions:
+
+1. What is a RFC and how does it apply to HTTP?
+2. What are the HTTP methods and what/when are they used?
+3. What are the HTTP status codes and how are they grouped?
+4. What is the Accept HTTP Header used for? 
+5. What are media types and which of these are used for HTML, JSON and plain text?
+6. What is the Content-Type header?
+7. Where do above HTTP status and Headers live? In the Request or Response?
+
+## Demo
 #### Show the HTTP Request Headers
 
-The lambda is passed an enviroment Hash built from the HTTP Request. Here we 
-return a couple of entries in the environment hash.
+The lambda is passed an enviroment Hash built from the HTTP Request. Here we return a couple of entries in the environment hash.
 
 ```
 ruby lambda_http_headers.rb
@@ -30,18 +63,25 @@ In Chrome, Safari, Firefox, etc.
 http://localhost:1234/this%20is%20it/but/not%20the%20/end?name=jack&age=33
 
 ### Lab
-Write a simple Rack app that will fill in the blanks in the below text from URL params. The filled in text will be returned by the HTTP Response.
+Write a simple Rack app that will fill in the blanks in the below text from URL params. The filled in text will be returned by the HTTP Response. The word in __bold__ are going to be replaced by URL params.
 
-"_Who_ arrested _name_ for _crime_ earlier this week, and according to a report by the _source_, the incident stemmed from a dispute over a _object_."
+"__Who__ arrested __name__ for __crime__ earlier this week, and according to a report by the __source__, the incident stemmed from a dispute over a __object__."
 
 Example:  
-"_Police_ arrested _a Main Street resident_ for _illegal possession of a handgun and ammunition_ earlier this week, and according to a report _in the Lowell Sun_, the incident stemmed from a dispute over a _frozen cheese pizza_."
+"__Police__ arrested __a Main Street resident__ for __illegal possession of a handgun and ammunition__ earlier this week, and according to a report __in the Lowell Sun__, the incident stemmed from a dispute over a __frozen cheese pizza__."
+
+http://localhost:1234/?who=The Police&name=a Main Street resident&crime=possesion of a handgun&source=in the Lowell Sun&object=frozen cheess pizza
+
+
+##### Question what are the %20 in the response?
 
 ### Demo
 
 #### Same as above but use a Ruby class.
 
-Just add a call method to a Ruby class. The call method takes one argument, the enviroment Hash built from the HTTP Request.
+Just add a call method to a Ruby class to make it a Rack app! 
+
+The call method takes one argument, the enviroment Hash built from the HTTP Request.
 
 This uses a convenvience class, [Rack::Request](https://github.com/rack/rack/blob/master/lib/rack/request.rb), provided by Rack. It gives one access to 
 the HTTP Request.
@@ -63,7 +103,10 @@ Enter this URL into Chrome and open the Chrome debugger.
 
 
 ### Lab
-Write our own _params_ method that will turn the URL params into a hash. 
+Write our own Rack app, bin/rack_params.rb, and implement a _params_ method that will turn the URL params in the HTTP Request into a hash. 
+
+Show this hash in the HTTP Response body.
+
 
 Enter this in Chrome:  
 ```
@@ -78,7 +121,7 @@ To get:
 ## Demo
 Show the People Rack app.
 
-The files are in lib/person.rb and bin/people_app.rb.
+The files are in lib/person.rb and bin/peopleo_app.rb.
 
 ### Routing Lab
 Write an app that will:  

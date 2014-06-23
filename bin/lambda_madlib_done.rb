@@ -20,8 +20,8 @@ app = lambda do |env|
 
   mad_lib_str = "#{qh.fetch(:who, 'The Police')} arrested #{qh.fetch(:name, 'a white male')} for #{qh.fetch(:crime, 'Jay Walking')} earlier this week, and according to a report by the #{qh.fetch(:source, 'Boston Globe')}, the incident stemmed from a dispute over a #{qh.fetch(:object, 'an old sock')}\n"
   
-
-  [200, {'Content-Type' => 'text/html'}, [mad_lib_str] ]
+  # [status, {HTTP Response Headers }, HTTP Response body ]
+  [200, {'Content-Type' => 'text/plain'}, [mad_lib_str] ]
 end
 
 Rack::Handler::WEBrick.run app, Port: 3000
