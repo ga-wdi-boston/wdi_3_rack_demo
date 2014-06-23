@@ -139,6 +139,18 @@ rackup config.ru
 ## Demo
 Show the People Rack app.
 
+Create directories that will mimic the Rails directory structure.
+
+```
+mkdir -p app/models  
+mkdir -p app/controllers
+mkdir -p config
+mkdir -p lib
+
+```
+
+
+
 The files are in lib/person.rb and bin/peopleo_app.rb.
 
 ### Routing Lab
