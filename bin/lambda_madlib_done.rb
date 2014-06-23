@@ -18,7 +18,6 @@ app = lambda do |env|
     qh[key.to_sym] = value
   end
 
-
   mad_lib_str = "#{qh.fetch(:who, 'The Police')} arrested #{qh.fetch(:name, 'a white male')} for #{qh.fetch(:crime, 'Jay Walking')} earlier this week, and according to a report by the #{qh.fetch(:source, 'Boston Globe')}, the incident stemmed from a dispute over a #{qh.fetch(:object, 'an old sock')}\n"
   
 
