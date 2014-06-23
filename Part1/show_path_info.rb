@@ -3,7 +3,8 @@ require 'rack'
 
 app = lambda{ |env| [200, { }, "You requested the path #{env['PATH_INFO']}"] }
 
-Rack::Handler::Thin.run app, :Port => 1234
+Rack::Handler::WEBrick.run app, Port: 1234
+# Rack::Handler::Thin.run app, :Port => 1234
 
 # ruby show_path_info.rb
 
