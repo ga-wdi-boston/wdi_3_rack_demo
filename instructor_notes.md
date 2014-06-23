@@ -118,6 +118,24 @@ To get:
 {:name=>"tom", :age=>"57", :city=>"Groton", :state=>"MA"}
 ```
 
+## Demo 
+
+Let's create a _rackup_. 
+
+
+"rackup is a useful tool for running Rack applications. rackup automatically figures out the environment it is run in, and runs your application as FastCGI, CGI, or standalone with Mongrel or WEBrick – all from the same configuration.
+
+To use rackup, you’ll need to supply it with a rackup config file. By convention, you should use .ru extension for a rackup config file. Supply it a run RackObject and you’re ready to go:
+
+By default, rackup will start a server on port 9292." [Rack Tutorial](http://rubylearning.com/blog/a-quick-introduction-to-rack/#C7)
+
+Take a look at config.ru. Simple rack app that is run by rackup.
+
+
+```
+rackup config.ru
+```
+
 ## Demo
 Show the People Rack app.
 
