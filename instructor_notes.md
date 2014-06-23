@@ -74,21 +74,30 @@ To get:
 ```
 {:name=>"tom", :age=>"57", :city=>"Groton", :state=>"MA"}
 ```
- 
-### Lab
+
+## Demo
+Show the People Rack app.
+
+The files are in lib/person.rb and bin/people_app.rb.
+
+### Routing Lab
 Write an app that will:  
 
 * Create a Product class where each product has a name, description and price.  
 * Create 10 products and add them to an array.  
 * Retrieve all the products by going to localhost:3000/products   
 	* Show the products as HTML.
-	* Show the products as JSON.
+	* Show the products as JSON. _(optional)_
 	
 	Note: The product class will have to_html and to_json methods.  
 
 * Show each individual Product by going to localhost:3000/product/:id . Where :id is the index of the product in the products array.
 
-	
+For example:  
+http://localhost:3000/products will show all the products in HTML, _(the default)_
+
+
+http://localhost:3000/product/4 show the fourth in HTML, _(the default)_	
 
 
                                                                       
