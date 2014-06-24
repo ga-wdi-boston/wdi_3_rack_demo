@@ -4,9 +4,19 @@
 
 ## Resources
 
-Are _Entities_ or _Objects_ that live on a server. We get _Representations_ of these resources when we a HTTP Request. 
+* Are _Entities_ or _Objects_ that live on a server.
 
-The location, or address, of the resource is specified by a URL.
+* We get , (html, json, xml, pdf,...), _Representations_ of these resources in the body of a HTTP Response sent back to the client from the server. 
+
+* A resource may have all or a subset of CRUD operations.
+
+For example, a user may be resource that can be represented in html, json, image. It may be created, read, updated and deleted. 
+
+* A resource's representation will be determined by the [Media Type](http://en.wikipedia.org/wiki/Internet_media_type)  which is the value in the  [Accept](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)  HTTP Request Header. 
+
+For example, to get the html representation of a user resource this Accept header should be set to application/html.
+
+* The location, or address, of the resource is specified by a URL.
 
 
 #### Resource Addresses, Uniform Resource Location (URL)
@@ -174,8 +184,4 @@ Rack provides a minimal interface between webservers supporting Ruby and Ruby fr
 
 ### Demo
 
-* Run a simple Rack app.  
-
-	```
-	ruby simplest.rb
-	```
+See the [instructor_notes.md](instructor_notes.md)
