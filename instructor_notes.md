@@ -4,6 +4,8 @@
 
 [Quick Intro to Rack](http://rubylearning.com/blog/a-quick-introduction-to-rack/)
 
+The Part1, Part2 and Part3 directories have a more in-depth into to Rack. Each directory has a README that explains how to work through each demo. _Left as an exercise for the reader_
+
 ### Demo
 
 #### Show the simplest Rack app possible.  
