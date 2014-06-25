@@ -10,11 +10,13 @@
 
 * A resource may have all or a subset of CRUD operations.
 
-For example, a user may be resource that can be represented in html, json, image. It may be created, read, updated and deleted. 
+For example, a Book may be resource that can be represented in html, json, pdf, mobi, etc. It may be created, read, updated and deleted. 
 
-* A resource's representation will be determined by the [Media Type](http://en.wikipedia.org/wiki/Internet_media_type)  which is the value in the  [Accept](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)  HTTP Request Header. 
+* A resource's representation will be determined by the [Media Type](http://en.wikipedia.org/wiki/Internet_media_type)  which is the value in the  [Accept](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html)  HTTP Request Header and the [Content-Type](http://www.w3.org/Protocols/rfc2616/rfc2616-sec14.html) in the HTTP Response Header.
 
-For example, to get the html representation of a user resource this Accept header should be set to application/html.
+For example, to get the html representation of a Book resource the HTTP Request Accept header should be set to text/html by the client. 
+
+If a server is returning the pdf representation, in the body of the HTTP Response, the Content-Type would be set to application/pdf.
 
 * The location, or address, of the resource is specified by a URL.
 
