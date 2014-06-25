@@ -21,6 +21,106 @@ If a server is returning the pdf representation, in the body of the HTTP Respons
 * The location, or address, of the resource is specified by a URL.
 
 
+## Network Stack  
+
+#### Each layer represents a Protocol.
+* These Protocols are defined by Request For Comment (RFC) documents. *No need to dig into these now*.
+* We are going to focus on the HTTP protocol.
+![Network Protocol](http://odetocode.com/aimages/http/netlayer.png)
+
+## Web Architecture
+
+##### HTTP Clients
+	* Browser. Chrome, Firefox, Safari, IE, …	
+	* Command line utilities. curl, wget
+	* HTTP Ruby libraries. HTTParty, Faraday, Typhoues, ...
+##### HTTP Servers. *Web Servers*.
+	* Apache, Nginx, Thin, Tomcat, Pow, WEBRick …
+	
+#### Web Frameworks. That run on the Server.
+[Web Frameworks](http://en.wikipedia.org/wiki/Comparison_of_web_application_frameworks) typically sit behind a Web/HTTP Server. They can run on one or more Servers, behind one or more Web Servers, receive a HTTP Request and generate a HTTP Response.
+
+
+![Web Architecture](./images/webserver_to_rails_setup.jpeg "Web Architecture")	
+
+* Ruby - Rack, Sinatra, Rails, Padrino, etc.
+* PHP - Zend, Laravel, etc.
+* Python - Django, ...
+* Java - Grails, Spring, ...
+	
+## HTTP Request/Response
+
+![HTTP Request and Response](./images/http_request_response.jpeg "HTTP Request and Response")	
+
+### HTTP Request  
+
+![HTTP Request](./images/http_request.jpeg "HTTP Request")	
+
+	From a HTTP client,typically a browser, to a web server running on a host system. 
+	* HTTP Request Methods
+		GET and POST most used.
+		* GET. Retrieve a resource.
+		* POST. Create a resource.
+		* PUT. Update a resource.
+		* DELETE, Delete a resource.
+		* HEAD, Retreive the headers for a resource. 
+	* GET HTTP Request Format
+		[method] [URL] [version]
+		[headers]
+	* Example GET Request:
+		GET http://vermonster.com HTTP/1.1
+		Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+		Accept-Encoding:gzip,deflate,sdch
+		Accept-Language:en-US,en;q=0.8
+		Connection:keep-alive
+		Host:vermonster.com
+		User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5)
+		AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1659.2 Safari/537.36#### 
+		
+		* Media Types
+			What kind of resource can we retrieve? Defined by Multipurpose Internet Mail Extensions (MIME) standards. Used in the HTTP Request Accept Header and the HTTP Response Content-Type Header.
+			* HTML = text/html
+		  	* GIF Image = image/gif
+		  	* PNG Image = image/gif
+		  	* MP4 Video = video/mp4
+		  	* PDF = application/pdf
+		  	* JSON = application/json  
+	* May have a body for creating or updating a resource. 
+	  Submitting a HTML Form will send the Form contents in the body of the Request. 
+	  
+	  The body will be url encoded.
+	  * The HTTP Request Accept header set to application/x-www-form-urlencoded 
+	  *  name1=value1&name2=value2&...
+
+  See [Media Types](http://en.wikipedia.org/wiki/Internet_media_type)*		
+#### HTTP Response
+
+![HTTP Response](./images/http_response.jpeg "HTTP Response")
+
+	Reply to a HTTP client from a web server.
+	* HTTP Response Overview
+	[version] [status] [reason]
+	[headers]
+  
+	[body]	# typically HTML, json, ...
+	* HTTP version should be 1.1
+	* Status Codes, [Status Codes](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
+		* 200  OK 
+   		* 301 Moved Permanently 
+		* 302 Moved Temporarily 
+   		* 400 Bad Request   
+		* 403 Forbidden 
+		* 404 Not Found 
+		* 500 Internal Server Error
+### Viewing HTTP Request/Response
+	* curl. Command line apps that sends requests.
+		* curl -i http://www.vermonster.com/
+	* Chrome Inspector. Developer tool built into Chrome browser.
+		* View -> Developer -> Developer Tools 
+		* Select Network
+		* Cmd-R to send request
+
+		
 #### Resource Addresses, Uniform Resource Location (URL)
 * \<scheme\>://\<host\>:\<port\>/\<path\>?\<query\>#\<fragment\>
 	* HTML pages:
@@ -101,85 +201,8 @@ The browser will load these embedded resources after as it loads the containing 
 
 For example, a HTML page may have links to images, videos, javascript, etc that will be *also* be loaded by the browser.
 
-## Network Stack  
 
-#### Each layer represents a Protocol.
-* These Protocols are defined by Request For Comment (RFC) documents. *No need to dig into these now*.
-* We are going to focus on the HTTP protocol.
-![Network Protocol](http://odetocode.com/aimages/http/netlayer.png)
 
-## HTTP Request/Response
-
-##### HTTP Clients
-	* Browser. Chrome, Firefox, Safari, IE, …	
-	* Command line utilities. curl, wget
-	* HTTP Ruby libraries. HTTParty, Faraday, Typhoues, ...
-##### HTTP Servers. *Web Servers*.
-	* Apache, Nginx, Thin, Tomcat, Pow, …
-	
-### HTTP Request
-	From a HTTP client,typically a browser, to a web server running on a host system. 
-	* HTTP Request Methods
-		GET and POST most used.
-		* GET. Retrieve a resource.
-		* POST. Create a resource.
-		* PUT. Update a resource.
-		* DELETE, Delete a resource.
-		* HEAD, Retreive the headers for a resource. 
-	* GET HTTP Request Format
-		[method] [URL] [version]
-		[headers]
-	* Example GET Request:
-		GET http://vermonster.com HTTP/1.1
-		Accept:text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
-		Accept-Encoding:gzip,deflate,sdch
-		Accept-Language:en-US,en;q=0.8
-		Connection:keep-alive
-		Host:vermonster.com
-		User-Agent:Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_5)
-		AppleWebKit/537.36 (KHTML, like Gecko) Chrome/32.0.1659.2 Safari/537.36#### 
-		
-		* Media Types
-			What kind of resource can we retrieve? Defined by Multipurpose Internet Mail Extensions (MIME) standards. Used in the HTTP Request Accept Header and the HTTP Response Content-Type Header.
-			* HTML = text/html
-		  	* GIF Image = image/gif
-		  	* PNG Image = image/gif
-		  	* MP4 Video = video/mp4
-		  	* PDF = application/pdf
-		  	* JSON = application/json
-
-  See [Media Types](http://en.wikipedia.org/wiki/Internet_media_type)*		
-#### HTTP Response
-	Reply to a HTTP client from a web server.
-	* HTTP Response Overview
-	[version] [status] [reason]
-	[headers]
-  
-	[body]	# typically HTML, json, ...
-	* HTTP version should be 1.1
-	* Status Codes, [Status Codes](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
-		* 200  OK 
-   		* 301 Moved Permanently 
-		* 302 Moved Temporarily 
-   		* 400 Bad Request   
-		* 403 Forbidden 
-		* 404 Not Found 
-		* 500 Internal Server Error
-### Viewing HTTP Request/Response
-	* curl. Command line apps that sends requests.
-		* curl -i http://www.vermonster.com/
-	* Chrome Inspector. Developer tool built into Chrome browser.
-		* View -> Developer -> Developer Tools 
-		* Select Network
-		* Cmd-R to send request
-	* Run a *very* simple Rack application.
-		* ruby simple_rack_app.rb
-		* In Chrome: 
-			* http://localhost:1234/
-		* Look at in Chrome Inspector, Cmd-Option i.
-		* Go to the Network tab and refresh, Cmd-R
-		* Notice the HTTP parameter seen by the web server.
-		
 ## Rack 
 
 Rack provides a minimal interface between webservers supporting Ruby and Ruby frameworks.  
