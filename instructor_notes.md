@@ -36,19 +36,8 @@ http://localhost:1234/this%20is%20it/but/not%20the%20/end?name=jack&age=33
 
 Open the Chrome Inspector and go to the Network tab. Refresh and look at the HTTP Request/Response.
 
-### Lab
 
-Break up into groups of three and answer all of the below questions:
 
-1. What is a RFC and how does it apply to HTTP?
-2. What are the HTTP methods and what/when are they used?
-3. What are the HTTP status codes and how are they grouped?
-4. What is the Accept HTTP Header used for? 
-5. What are media types and which of these are used for HTML, JSON and plain text?
-6. What is the Content-Type header?
-7. Where do above HTTP status and Headers live? In the Request or Response?
-
-## Demo
 #### Show the HTTP Request Headers
 
 The lambda is passed an enviroment Hash built from the HTTP Request. Here we return a couple of entries in the environment hash.

@@ -120,6 +120,19 @@ If a server is returning the pdf representation, in the body of the HTTP Respons
 		* Select Network
 		* Cmd-R to send request
 
+## Lab
+
+Break up into groups of three. Do some research, _maybe using the HTTP book_, and answer all of the below questions:
+
+1. What is a RFC and how does it apply to HTTP?
+2. What are the HTTP methods and what/when are they used?
+3. What are the HTTP status codes and how are they grouped?
+4. What is the Accept HTTP Header used for? 
+5. What are media types and which of these are used for HTML, JSON and plain text?
+6. What is the Content-Type header?
+7. Where do the HTTP status and Headers live? In the Request or Response?
+
+## Demo
 		
 #### Resource Addresses, Uniform Resource Location (URL)
 * \<scheme\>://\<host\>:\<port\>/\<path\>?\<query\>#\<fragment\>
